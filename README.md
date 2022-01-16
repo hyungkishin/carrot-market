@@ -34,3 +34,5 @@ npm i next@latest react@rc react-dom@rc
     "./pages/**/*.{js,jsx,ts,tsx}"
   ],
 ```
+
+#### tail-wind ui
