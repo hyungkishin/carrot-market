@@ -38,5 +38,5 @@ npm i next@latest react@rc react-dom@rc
 #### tail-wind ui
 
 ```
-
+modifiers for form 
 ```
