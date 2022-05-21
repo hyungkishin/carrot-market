@@ -55,6 +55,30 @@ ex) pscale database create wowDataBase --region ap-northeast 를 입력하면 wo
 - pscale connect [내가 만든 데이터베이스] (이러면 db 연결 끝난다. )
 - 물론 콘솔 종료하면. 끊긴다
 - .env 에 DATABASE_URL="mysql:127.0.0.1:3306/내가만든 db이름" 입력해주면 된다.
-- port 바꾸는 법 개 간단한데, pscale connect db 이름 --port 바꾸고 싶은 port 연결하면된다.
 
+
+진짜 아래 오류에서 분조장 올뻔했다.
+- 당황스럽다. 다른 디비 쓰란다 ?
+> Error: P3004: The `mysql` database is a system database, it should not be altered with prisma migrate. Please connect to another database.
+
+> 3304 에러는 " {database_name}데이터베이스는 시스템 데이터베이스이므로 프리즈마 마이그레이션으로 변경하면 안 됩니다. 다른 데이터베이스에 연결하십시오." 이런 내용인데... 이를 해결하기 위해 port 가 문제인줄 알고 pscale connect db 이름 --port 바꾸고 싶은 port 를 입력했다. 
+-> pscale connect dbName main --port 3309
+
+그래서 
+> Error: P1001: Can't reach database server at `localhost`:`3306`
+Please make sure your database server is running at `localhost`:`3306`
+
+와 ...1001 은 무슨에러냐 ? 
+> "다음에서 데이터베이스 서버에 연결할 수 없습니다 {database_host}: 에서 {database_port}데이터베이스 서버가 실행되고 있는지 확인하십시오 {database_host}. {database_port}"
+
+해결법은 최초 db 만들때 ID PW 줄건데, (settings 에 pw 알수있음)
+
+> DATABASE_URL="mysql://username:pw@localhost:변경포트/dbname"
+
+진짜 개 삽질 했네
+>https://intrepidgeeks.com/tutorial/next-js-using-preisma-to-access-the-planetscale-database
+
+>https://github.com/planetscale/discussion/discussions/139
+
+일단 해결됬으니 계속 가보자고 . 
 
