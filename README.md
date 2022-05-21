@@ -40,3 +40,24 @@ npm i next@latest react@rc react-dom@rc
 ```
 modifiers for form 
 ```
+
+### prisma
+```
+ORM 진영의 js <-> DataBase 를 편리하게 사용할 수 있게끔 해주는 친구이다. 
+```
+
+### PlanetScale 
+```
+MySQL 과 호환되는 serverless 데이터베이스 플랫폼.
+
+brew install planetscale/tap/pscale
+
+brew install mysql-client
+
+pscale
+
+pscale database create carrot-market --region ap-northeast
+
+
+schema 설정이 끝난뒤, 바로 db 푸쉬.
+```
