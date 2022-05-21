@@ -2,7 +2,7 @@ interface InputProps {
   label: string;
   name: string;
   kind?: "text" | "phone" | "price";
-  [key: string]: any;
+  [key: string]: any; // input 에 원하는 prop 을 전달하고 싶을떄
 }
 
 export default function Input({

@@ -12,6 +12,8 @@ datasource db {
   referentialIntegrity = "prisma"
 }
 
+// Prisma 는 이 파일을 읽고 데이터베이스에 변경점을 deploy 할 것이다.
+// 이 파일을 읽고 자바 스크립트, 타입스크립트 Client 를 생성해 줄 건데, 데이터베이스가 있어야 한다. (너무 당연하게도 :) )
 model User {
   id        Int      @id @default(autoincrement())
   phone     Int?     @unique
