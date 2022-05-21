@@ -48,5 +48,13 @@ pscale 에 로그인을 해보자.
   AWS ap-southeast-2 (Sydney)         aws-ap-southeast-2   Yes      
   AWS sa-east-1 (Sao Paulo)           aws-sa-east-1        Yes   
 ```
+5. 여기서 ap-northeast 를 기억 (중요) ap-northeast 에 데이터베이스를 만들것이다.
+6. 콘솔에 pscale database create [dbName] --region ap-northeast 입력 ! [dbName] 은 만들고 싶은 데이터베이스 이름 ! 
+ex) pscale database create wowDataBase --region ap-northeast 를 입력하면 wowDataBase 이름으로 만들어짐
+7. 이제 내 데이터베이스 스키마랑 연결을 해야하는데 콘솔에 아래 명령어 입력.
+- pscale connect [내가 만든 데이터베이스] (이러면 db 연결 끝난다. )
+- 물론 콘솔 종료하면. 끊긴다
+- .env 에 DATABASE_URL="mysql:127.0.0.1:3306/내가만든 db이름" 입력해주면 된다.
+- port 바꾸는 법 개 간단한데, pscale connect db 이름 --port 바꾸고 싶은 port 연결하면된다.
 
 
