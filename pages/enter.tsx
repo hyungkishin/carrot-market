@@ -39,9 +39,12 @@ const Enter: NextPage = () => {
    */
 
   /* V2  fetch를 숨기고, state를 사용 */
-  const onValid = (data: EnterForm) => {
-   enter(data);
+  const onValid = (validForm: EnterForm) => {
+    if (loading) return;
+    enter(validForm);
   };
+
+  console.log(loading, data, error);
 
   return (
     <div className="mt-16 px-4">
@@ -95,9 +98,11 @@ const Enter: NextPage = () => {
               kind="phone"
             />
           ) : null}
-          {method === "email" ? <Button text={"Get login link"} /> : null}
+          {method === "email" ? (
+            <Button text={loading ? "Loading" : "Get login link"} />
+          ) : null}
           {method === "phone" ? (
-            <Button text={submitting ? "Loading" : "Get one-time password"} />
+            <Button text={loading ? "Loading" : "Get one-time password"} />
           ) : null}
         </form>
 
