@@ -4,6 +4,7 @@ import Button from "../components/button";
 import Input from "../components/input";
 import { cls } from "../libs/server/utils";
 import { useForm } from "react-hook-form";
+import useMutation from "../libs/client/useMutation";
 
 interface EnterForm {
   email?: string;
@@ -11,6 +12,7 @@ interface EnterForm {
 }
 
 const Enter: NextPage = () => {
+  const [enter, { loading, data, error }] = useMutation("/api/users/enter");
   const [submitting, setSubmitting] = useState(false);
   const { register, handleSubmit, reset } = useForm();
   const [method, setMethod] = useState<"email" | "phone">("email");
@@ -23,15 +25,22 @@ const Enter: NextPage = () => {
     setMethod("phone");
   };
 
+  /* V1 기존 onValid
   const onValid = (data: EnterForm) => {
-    setSubmitting(true);
-    fetch("/api/users/enter", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" },
-    }).then(() => {
-      setSubmitting(false);
-    });
+     setSubmitting(true);
+     fetch("/api/users/enter", {
+       method: "POST",
+       body: JSON.stringify(data),
+       headers: { "Content-Type": "application/json" },
+     }).then(() => {
+       setSubmitting(false);
+     });
+   };
+   */
+
+  /* V2  fetch를 숨기고, state를 사용 */
+  const onValid = (data: EnterForm) => {
+   enter(data);
   };
 
   return (
