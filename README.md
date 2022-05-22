@@ -5,8 +5,8 @@
 - mySql
 
 ### 구동
-- yarn dev
 - pscale connect carrot-market --port 3309
+- yarn dev
 
 ### 스키마 업로드 
 - $ npx prisma db push 
