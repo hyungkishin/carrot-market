@@ -37,10 +37,10 @@ export default function useMutation(url: string): UseMutationResult {
     })
       .then((res) => res.json().catch(() => {}))
       /* V1
-      .then(setData)
-      .catch(setError)
-      .finally(() => setLoading(false)); 
-    */
+        .then(setData)
+        .catch(setError)
+        .finally(() => setLoading(false)); 
+      */
       /* V2 */
       .then((data) => setState((prev) => ({ ...prev, data })))
       .catch((error) => setState((prev) => ({ ...prev, error })))
